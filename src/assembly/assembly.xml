@@ -7,11 +7,23 @@
     </formats>
     <fileSets>
         <fileSet>
-            <directory>${project.build.directory}</directory>
-            <outputDirectory>/jar</outputDirectory>
-            <includes>
-                 <include>{project.artifactId}*.jar</include>
-            </includes>
+        <outputDirectory>/jar</outputDirectory>
+        <directory>${project.build.directory}</directory>
+        <includes>
+            <include>
+                ${project.artifactId}*.jar
+            </include>
+        </includes>
         </fileSet>
     </fileSets>
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>/lib</outputDirectory>
+            <fileMode>0755</fileMode>
+            <directoryMode>0755</directoryMode>
+            <includes>
+                    <include>*:jar:*</include>
+            </includes>
+                </dependencySet>
+    </dependencySets>
 </assembly>
