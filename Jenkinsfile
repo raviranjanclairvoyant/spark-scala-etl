@@ -32,4 +32,15 @@ pipeline {
                  }
               }
            }
+           post {
+                  success {
+                      slackSend message: 'success'
+                  }
+                  failure {
+                     slackSend message: 'test failure'
+                  }
+                  always {
+                      slackSend message: 'test done'
+                  }
+               }
 }
