@@ -20,14 +20,14 @@ pipeline {
         stage('Moving data to GCS BUCKET') {
             steps {
                   withEnv(['GCLOUD_PATH=/usr/lib/google-cloud-sdk/bin']) {
-                     sh '$GCLOUD_PATH/gsutil cp /bitnami/jenkins/home/workspace/spark-scala-etl/target/spark-scala-etl-1.0-SNAPSHOT.jar gs://dataproc_ravi_poc/spark_jar/'
+                     sh '$GCLOUD_PATH/gsutil cp /bitnami/jenkins/home/workspace/spark-scala-etl/target/spark-scala-etl-1.0-SNAPSHOT-jar-with-dependencies.jar gs://dataproc_ravi_poc/spark_jar/'
                     }
                  }
               }
         stage('Running the jar with gcloud') {
              steps {
                     withEnv(['GCLOUD_PATH=/usr/lib/google-cloud-sdk/bin']) {
-                       sh '$GCLOUD_PATH/gcloud dataproc jobs submit spark --cluster=cluster-e7b7 --region=us-central1 --class=org.example.hello --jars=gs://dataproc_ravi_poc/spark_jar/spark-scala-etl-1.0-SNAPSHOT.jar'
+                       sh '$GCLOUD_PATH/gcloud dataproc jobs submit spark --cluster=cluster-e7b7 --region=us-central1 --class=org.example.hello --jars=gs://dataproc_ravi_poc/spark_jar/spark-scala-etl-1.0-SNAPSHOT-jar-with-dependencies.jar'
                     }
                  }
               }

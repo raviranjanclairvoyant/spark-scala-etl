@@ -68,9 +68,14 @@
             <version>3.1.0</version>
             <configuration>
                 <tarLongFileMode>posix</tarLongFileMode>
+                <descriptorRefs>
+                    <descriptorRef>jar-with-dependencies</descriptorRef>
+                </descriptorRefs>
+                <!--
                 <descriptors>
                     <descriptor>src/assembly/assembly.xml</descriptor>
                 </descriptors>
+                <-->
             </configuration>
             <executions>
                 <execution>

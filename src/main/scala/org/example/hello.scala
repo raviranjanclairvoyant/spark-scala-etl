@@ -8,7 +8,7 @@ object hello{
 
  println("hello scala is ready")
     val spark = SparkSession.builder()
-      .master("local")
+      .master("yarn")
       .appName("My name is ravi")
       .getOrCreate()
     import spark.implicits._
@@ -20,6 +20,11 @@ object hello{
     ).toDF("number", "word")
 
     someDF.show()
+
+    someDF.write.mode("overwrite")
+      .format("bigquery")
+      .option("temporaryGcsBucket","dataproc_ravi_poc")
+      .save("playground-375318.test.ravi_test")
 
     println(spark.sparkContext.appName)
   }
