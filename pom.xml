@@ -33,6 +33,11 @@
             <artifactId>scala-library</artifactId>
             <version>${scala.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.cloud.spark</groupId>
+            <artifactId>spark-bigquery_2.12</artifactId>
+            <version>0.34.0</version>
+        </dependency>
     </dependencies>
 
     <build>
