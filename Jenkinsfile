@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('New Build') {
             steps {
-             slackSend "started ${env.JOB_NAME} ${env.BUILD_NUMBER}"
+             slackSend message:"$BUILD_URL"
               sh 'mvn clean package'
             }
         }
