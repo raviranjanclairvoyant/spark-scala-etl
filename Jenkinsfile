@@ -24,7 +24,6 @@ pipeline {
                     }
                  }
               }
-           }
         stage('Running the jar with gcloud') {
              steps {
                     withEnv(['GCLOUD_PATH=/usr/lib/google-cloud-sdk/bin']) {
