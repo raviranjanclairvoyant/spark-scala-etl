@@ -17,10 +17,10 @@ pipeline {
             }
         }
 
-        stage('Moving data to GCS BUCKET') {
+        stage('Moving data to GCS BUCKET new') {
             steps {
                   withEnv(['GCLOUD_PATH=/usr/lib/google-cloud-sdk/bin']) {
-                     sh 'sudo $GCLOUD_PATH/gsutil cp /bitnami/jenkins/home/workspace/spark-scala-etl/target/spark-scala-etl-1.0-SNAPSHOT.jar gs://dataproc_ravi_poc/spark_jar/'
+                     sh '$GCLOUD_PATH/gsutil cp /bitnami/jenkins/home/workspace/spark-scala-etl/target/spark-scala-etl-1.0-SNAPSHOT.jar gs://dataproc_ravi_poc/spark_jar/'
                     }
                  }
               }
