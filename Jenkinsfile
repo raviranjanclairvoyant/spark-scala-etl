@@ -27,7 +27,7 @@ pipeline {
         stage('Running the jar with gcloud') {
              steps {
                     withEnv(['GCLOUD_PATH=/usr/lib/google-cloud-sdk/bin']) {
-                       sh '$GCLOUD_PATH/gcloud jobs submit spark --cluster=cluster-e7b7 --region=us-central1 --class=org.example.hello --jars=gs://dataproc_ravi_poc/spark_jar/spark-scala-etl-1.0-SNAPSHOT.jar'
+                       sh '$GCLOUD_PATH/gcloud dataproc jobs submit spark --cluster=cluster-e7b7 --region=us-central1 --class=org.example.hello --jars=gs://dataproc_ravi_poc/spark_jar/spark-scala-etl-1.0-SNAPSHOT.jar'
                     }
                  }
               }
