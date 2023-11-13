@@ -8,7 +8,7 @@ pipeline {
         stage('New Build') {
             steps {
              echo "The build number is ${env.BUILD_NUMBER}"
-             slackSend color: 'good', message: "A @user build is started by ${env.BUILD_USER} and url is ${env.BUILD_URL}"
+             slackSend color: 'good', message: "A <@U890XFRC3> build is started by ${env.BUILD_USER} and url is ${env.BUILD_URL}"
               sh 'mvn clean package'
             }
         }
