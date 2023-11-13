@@ -8,8 +8,8 @@ pipeline {
         stage('New Build') {
             steps {
              echo "The build number is ${env.BUILD_NUMBER}"
-             slackSend message: "The build number is ${env.BUILD_URL}"
-             slackSend message: "The build number is ${env.BUILD_USER_ID}"
+             slackSend color: 'danger' message: "The build number is ${env.BUILD_URL}"
+             slackSend color: 'good',message: "The build number is ${env.BUILD_USER_ID}"
 
               sh 'mvn clean package'
             }
