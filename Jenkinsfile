@@ -9,7 +9,7 @@ pipeline {
         stage('New Build') {
             steps {
              echo "The build number is ${env.BUILD_NUMBER}"
-             slackSend color: 'good', message: "A <@$userId>  build is started by ${env.BUILD_USER} and url is ${env.BUILD_URL}"
+             slackSend color: 'good', message: "Hi <@$userId> your build has started and url is ${env.BUILD_URL}"
               sh 'mvn clean package'
             }
         }
@@ -39,10 +39,10 @@ pipeline {
            }
            post {
                   success {
-                      slackSend color: 'good', message: 'Spark job was successful'
+                      slackSend color: 'good', message: "Hi <@$userId> Spark job was successful"
                   }
                   failure {
-                     slackSend color: 'danger', message: "failed pleas check ${env.BUILD_URL}"
+                     slackSend color: 'danger', message: "Hi <@$userId> your build has failed pleas check ${env.BUILD_URL}"
                   }
                }
 }
