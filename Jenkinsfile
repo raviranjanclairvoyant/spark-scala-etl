@@ -39,7 +39,7 @@ pipeline {
            }
            post {
                   success {
-                      slackSend color: 'good', message: "Hi <@$userId> Spark job was successful"
+                      slackSend color: 'good', message: "Hi <@$userId> Spark job was successful Data is written in Bigquery"
                   }
                   failure {
                      slackSend color: 'danger', message: "Hi <@$userId> your build has failed pleas check ${env.BUILD_URL}"
