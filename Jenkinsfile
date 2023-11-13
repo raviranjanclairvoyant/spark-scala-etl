@@ -8,9 +8,7 @@ pipeline {
         stage('New Build') {
             steps {
              echo "The build number is ${env.BUILD_NUMBER}"
-             slackSend color: 'danger', message: "The build number is ${env.BUILD_URL}"
-             slackSend color: 'good', message: "The build number is ${env.BUILD_USER_ID}"
-
+             slackSend color: 'good', message: "A build is started by ${env.BUILD_USER_ID} and url is ${env.BUILD_URL}"
               sh 'mvn clean package'
             }
         }
@@ -38,10 +36,10 @@ pipeline {
            }
            post {
                   success {
-                      slackSend message: 'success'
+                      slackSend color: 'good', message: 'success'
                   }
                   failure {
-                     slackSend message: 'test failure'
+                     slackSend color: 'danger', message: "failed pleas check ${env.BUILD_URL}"
                   }
                   always {
                       slackSend message: 'test done'
