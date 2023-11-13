@@ -16,7 +16,7 @@ object hello{
     val someDF = Seq(
       (8, "bat"),
       (64, "mouse"),
-      (-27, "horse")
+      (-27, "horss")
     ).toDF("number", "word")
 
     someDF.show()
