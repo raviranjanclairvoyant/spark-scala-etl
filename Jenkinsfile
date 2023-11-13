@@ -7,6 +7,8 @@ pipeline {
     stages {
         stage('New Build') {
             steps {
+            def userId = slackUserIdFromEmail('ravi.ranjan@clairvoyantsoft.com')
+            slackSend(color: "good", message: "<@$userId> Message from Jenkins Pipeline")slackSend(color: "good", message: "<@$userId> Message from Jenkins Pipeline")
              echo "The build number is ${env.BUILD_NUMBER}"
              slackSend color: 'good', message: "A <@U890XFRC3> build is started by ${env.BUILD_USER} and url is ${env.BUILD_URL}"
               sh 'mvn clean package'
