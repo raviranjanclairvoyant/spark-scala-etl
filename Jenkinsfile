@@ -28,7 +28,7 @@ pipeline {
                     }
                  }
               }
-        stage('Running the jar with gcloud') {
+        stage('Running Dag with airflow') {
              steps {
                     withEnv(['GCLOUD_PATH=/usr/lib/google-cloud-sdk/bin']) {
                      slackSend color: 'good', message: "Running gcloud spark command"
