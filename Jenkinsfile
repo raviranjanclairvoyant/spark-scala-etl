@@ -32,14 +32,16 @@ pipeline {
              steps {
                     withEnv(['GCLOUD_PATH=/usr/lib/google-cloud-sdk/bin']) {
                      slackSend color: 'good', message: "Running gcloud spark command"
-                       sh '$GCLOUD_PATH/gcloud dataproc jobs submit spark --cluster=cluster-e7b7 --region=us-central1 --class=org.example.hello --jars=gs://dataproc_ravi_poc/spark_jar/spark-scala-etl-1.0-SNAPSHOT-jar-with-dependencies.jar'
+                       //sh '$GCLOUD_PATH/gcloud dataproc jobs submit spark --cluster=cluster-e7b7 --region=us-central1 --class=org.example.hello --jars=gs://dataproc_ravi_poc/spark_jar/spark-scala-etl-1.0-SNAPSHOT-jar-with-dependencies.jar'
+                       sh '$GCLOUD_PATH/gcloud composer environments  run  data-generator-demo --location us-central1  dags trigger -- spark-scala-etl'
+
                     }
                  }
               }
            }
            post {
                   success {
-                      slackSend color: 'good', message: "Hi <@$userId> Spark job was successful Data is written in Bigquery"
+                      slackSend color: 'good', message: "Hi <@$userId> Airflow dag is trigged please check the ui"
                   }
                   failure {
                      slackSend color: 'danger', message: "Hi <@$userId> your build has failed pleas check ${env.BUILD_URL}"
