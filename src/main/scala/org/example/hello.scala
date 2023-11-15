@@ -14,17 +14,14 @@ object hello{
     import spark.implicits._
 
     val someDF = Seq(
-      (8, "bat"),
-      (64, "mouse"),
+      (8, "bat_ravi"),
+      (64, "mouseravi"),
       (-27, "horss")
-    ).toDF("number", "word")
+    ).toDF("numbers", "words")
 
     someDF.show()
 
-    someDF.write.mode("overwrite")
-      .format("bigquery")
-      .option("temporaryGcsBucket","dataproc_ravi_poc")
-      .save("playground-375318.test.ravi_test")
+    someDF.write.mode("overwrite").format("bigquery").option("temporaryGcsBucket","dataproc_ravi_poc").save("playground-375318.test.ravi_test")
 
     println(spark.sparkContext.appName)
   }
